@@ -1,6 +1,6 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import {fileURLToPath, URL} from "node:url";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { fileURLToPath, URL } from 'node:url';
 
 const host = process.env.TAURI_DEV_HOST;
 
@@ -14,8 +14,8 @@ export default defineConfig(async () => ({
   clearScreen: false,
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
   // 2. tauri expects a fixed port, fail if that port is not available
   server: {
@@ -24,14 +24,14 @@ export default defineConfig(async () => ({
     host: host || false,
     hmr: host
       ? {
-          protocol: "ws",
+          protocol: 'ws',
           host,
           port: 1421,
         }
       : undefined,
     watch: {
       // 3. tell Vite to ignore watching `src-tauri`
-      ignored: ["**/src-tauri/**"],
+      ignored: ['**/src-tauri/**'],
     },
   },
 }));

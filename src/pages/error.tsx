@@ -1,13 +1,13 @@
-import { useRouteError, isRouteErrorResponse } from "react-router-dom";
-import { Result, Button } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useRouteError, isRouteErrorResponse } from 'react-router-dom';
+import { Result, Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 export const ErrorPage = () => {
   const error = useRouteError();
   const navigate = useNavigate();
 
-  let title = "Something went wrong";
-  let subTitle = "Unknown error";
+  let title = 'Something went wrong';
+  let subTitle = 'Unknown error';
 
   if (isRouteErrorResponse(error)) {
     title = `${error.status}`;
@@ -22,7 +22,7 @@ export const ErrorPage = () => {
       title={title}
       subTitle={subTitle}
       extra={
-        <Button type="primary" onClick={() => navigate("/")}>
+        <Button type="primary" onClick={() => navigate('/')}>
           Back Home
         </Button>
       }

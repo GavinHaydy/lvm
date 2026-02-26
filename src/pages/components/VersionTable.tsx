@@ -1,6 +1,6 @@
-import React from "react";
-import type { TableProps } from "antd";
-import { Table, Input, Button } from "antd";
+import React from 'react';
+import type { TableProps } from 'antd';
+import { Table, Input, Button } from 'antd';
 
 const { Search } = Input;
 
@@ -26,33 +26,33 @@ export const VersionTable: React.FC<VersionTableProps> = ({
   onInstallToggle,
   onUseToggle,
 }) => {
-  const columns: TableProps<VersionItem>["columns"] = [
+  const columns: TableProps<VersionItem>['columns'] = [
     {
-      title: "Version",
-      dataIndex: "version",
+      title: 'Version',
+      dataIndex: 'version',
     },
     {
-      title: "Install Status",
-      dataIndex: "install_status",
+      title: 'Install Status',
+      dataIndex: 'install_status',
       render: (_, record) => (
         <Button
           type="primary"
           danger={record.install_status}
           onClick={() => onInstallToggle?.(record)}
         >
-          {record.install_status ? "Uninstall" : "Install"}
+          {record.install_status ? 'Uninstall' : 'Install'}
         </Button>
       ),
     },
     {
-      title: "Use Status",
-      dataIndex: "use_status",
+      title: 'Use Status',
+      dataIndex: 'use_status',
       render: (_, record) => (
         <Button
-          type={record.use_status ? "primary" : "default"}
+          type={record.use_status ? 'primary' : 'default'}
           onClick={() => onUseToggle?.(record)}
         >
-          {record.use_status ? "Used" : "Use"}
+          {record.use_status ? 'Used' : 'Use'}
         </Button>
       ),
     },
@@ -71,7 +71,7 @@ export const VersionTable: React.FC<VersionTableProps> = ({
         size="small"
         dataSource={data}
         columns={columns}
-        rowKey={(record) => record.version}
+        rowKey={record => record.version}
         loading={loading}
       />
     </>
