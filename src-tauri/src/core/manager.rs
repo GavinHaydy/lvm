@@ -42,11 +42,16 @@ impl LanguageManager {
         let list = slice.iter().map(|v| {
             VersionInfo {
                 version: v.clone(),
-                installed: installed.contains(v),
-                active: current.as_ref() == Some(v),
+                install_status: installed.contains(v),
+                use_status: current.as_ref() == Some(v),
             }
         }).collect();
 
         Ok(PageResult { total, list })
+    }
+
+    #[allow(dead_code)]
+    pub async fn download(&self, version: &str) -> Result<String, String> {
+        self.installer.download(version).await
     }
 }

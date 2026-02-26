@@ -13,3 +13,13 @@ pub async fn list_versions(
     let manager = LanguageManager::new(language)?;
     manager.list_versions(page, page_size).await
 }
+
+#[allow(dead_code)]
+#[tauri::command]
+pub async fn download_version(
+    language: String,
+    version: String,
+) -> Result<String, String> {
+    let manager = LanguageManager::new(language)?;
+    manager.download(&version).await
+}

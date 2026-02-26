@@ -10,4 +10,6 @@ pub trait LanguageInstaller {
     async fn list_versions(&self) -> Result<Vec<String>, String>;
     async fn list_installed(&self) -> Result<Vec<String>, String>;
     async fn current(&self) -> Result<Option<String>, String>;
+    #[allow(dead_code)]
+    async fn download(&self, version: &str) -> Result<String, String>;
 }

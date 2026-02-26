@@ -6,8 +6,8 @@ use serde::Serialize;
 #[derive(Serialize)]
 pub struct VersionInfo {
     pub version: String,
-    pub installed: bool,
-    pub active: bool,
+    pub install_status: bool,
+    pub use_status: bool,
 }
 
 #[derive(Serialize)]
