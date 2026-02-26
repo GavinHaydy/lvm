@@ -1,35 +1,35 @@
-import { Store as TauriStore } from "@tauri-apps/plugin-store"
+import { Store as TauriStore } from '@tauri-apps/plugin-store';
 
-let tauriStore: TauriStore | null = null
+let tauriStore: TauriStore | null = null;
 
 function isTauri() {
-  return "__TAURI__" in window
+  return '__TAURI__' in window;
 }
 
 async function getStore() {
   if (!isTauri()) {
-    console.warn("Not running in Tauri environment")
-    return null
+    console.warn('Not running in Tauri environment');
+    return null;
   }
 
   if (!tauriStore) {
-    tauriStore = await TauriStore.load("settings.json")
+    tauriStore = await TauriStore.load('settings.json');
   }
 
-  return tauriStore
+  return tauriStore;
 }
 
 export async function saveTheme(theme: string) {
-  const store = await getStore()
-  if (!store) return
+  const store = await getStore();
+  if (!store) return;
 
-  await store.set("theme", theme)
-  await store.save()
+  await store.set('theme', theme);
+  await store.save();
 }
 
 export async function loadTheme(): Promise<string | null> {
-  const store = await getStore()
-  if (!store) return null
+  const store = await getStore();
+  if (!store) return null;
 
-  return await store.get<string>("theme")
+  return await store.get<string>('theme');
 }

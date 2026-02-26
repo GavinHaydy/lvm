@@ -55,8 +55,6 @@
 // import { useEffect, useState } from "react";
 // import { invoke } from "@tauri-apps/api/core";
 
-
-
 // export default function App() {
 //     const [installedVersions, setInstalledVersions] = useState<string[]>([]);
 //     const [availableVersions, setAvailableVersions] = useState<string[]>([]);
@@ -123,14 +121,12 @@
 //     );
 // }
 
-import { RouterProvider } from "react-router-dom"
+import { RouterProvider } from 'react-router-dom';
 // import { router } from "./routers/router"
-import {router} from "@/routers/router";
+import { router } from '@/routers/router';
 
 function App() {
-    return(
-        <RouterProvider router={router}/>
-    )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
