@@ -13,10 +13,10 @@ export async function safeInvoke<T = any>(command: string, args?: Record<string,
 
     // 这里可以返回 mock 数据
     if (command === 'list_versions') {
-      return [
+      return {total: 2, list: [
         { version: '3.11.8', installed: true, active: true },
         { version: '3.12.0', installed: false, active: false },
-      ] as T;
+      ]} as T;
     }
 
     return Promise.resolve(undefined as T);
