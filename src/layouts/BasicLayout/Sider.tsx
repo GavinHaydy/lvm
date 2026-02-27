@@ -9,8 +9,7 @@ import { type RootState } from '@/store';
 import { saveTheme } from '@/shared/utils/tauriStore';
 import { setMode } from '@/features/theme/themeSlice';
 import i18n from '@/features/i18n';
-
-const { Option } = Select;
+import { LangEnum } from '@/core/constants/enum';
 
 export const Sider: React.FC<{ collapsed: boolean; onCollapse: (collapsed: boolean) => void }> = ({
   collapsed,
@@ -20,7 +19,7 @@ export const Sider: React.FC<{ collapsed: boolean; onCollapse: (collapsed: boole
   const dispatch = useDispatch();
   const [selectedKey, setSelectedKey] = useState<string>(location.pathname);
   const mode = useSelector((state: RootState) => state.theme.mode);
-  const [language, setLanguage] = useState<string>('zh-CN');
+  const [language, setLanguage] = useState<string>('zh');
 
   useEffect(() => {
     setSelectedKey(location.pathname);
@@ -73,10 +72,11 @@ export const Sider: React.FC<{ collapsed: boolean; onCollapse: (collapsed: boole
           value={language}
           onChange={handleLanguageChange}
           style={{ width: '100%', marginTop: '16px' }}
-        >
-          <Option value="zh">中文</Option>
-          <Option value="en">English</Option>
-        </Select>
+          options={[
+            { value: LangEnum.ZH, label: '中文' },
+            { value: LangEnum.EN, label: 'English' },
+          ]}
+        />
       </div>
     </div>
   );
