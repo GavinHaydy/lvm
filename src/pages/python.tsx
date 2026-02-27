@@ -18,8 +18,7 @@ export const PythonPage = () => {
       page: 0,
       pageSize: 10,
     });
-    console.log(result.total);
-    setData(result);
+      setData(result);
   };
 
   const handleInstallToggle = async (record: VersionItem) => {
