@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from '@/store';
-import { setMode } from '@/store/themeSlice';
-import { loadTheme } from '@/utils/tauriStore';
-import { ThemeProvider } from '@/theme/ThemeProvider';
+import { setMode } from '@/features/theme/themeSlice';
+import { loadTheme } from '@/shared/utils/tauriStore';
+import { ThemeProvider } from '@/features/theme/ThemeProvider';
 
 async function bootstrap() {
   const savedTheme = await loadTheme();

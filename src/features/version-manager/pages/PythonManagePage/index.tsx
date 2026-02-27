@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { VersionTable, VersionItem, VersionResult } from '@/pages/components/VersionTable';
+import { useEffect, useState } from 'react';
+import { VersionTable, VersionItem, VersionResult } from '@/shared/components/VersionTable';
 import { safeInvoke } from '@/api/tauri';
 
-export const PythonPage = () => {
+export const PythonManagePage = () => {
   const [data, setData] = useState<VersionResult>({
     total: 0,
     list: [],
@@ -18,7 +18,7 @@ export const PythonPage = () => {
       page: 0,
       pageSize: 10,
     });
-      setData(result);
+    setData(result);
   };
 
   const handleInstallToggle = async (record: VersionItem) => {

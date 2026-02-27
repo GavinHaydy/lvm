@@ -123,8 +123,8 @@
 
 import { RouterProvider } from 'react-router-dom';
 // import { router } from "./routers/router"
-import { router } from '@/routers/router';
-import './i18n';
+import { router } from '@/app/routes';
+import '../features/i18n/index';
 
 function App() {
   return <RouterProvider router={router} />;

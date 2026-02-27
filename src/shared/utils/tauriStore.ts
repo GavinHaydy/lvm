@@ -31,5 +31,5 @@ export async function loadTheme(): Promise<string | null> {
   const store = await getStore();
   if (!store) return null;
 
-  return await store.get<string>('theme');
+  return (await store.get<string>('theme')) || 'light';
 }
