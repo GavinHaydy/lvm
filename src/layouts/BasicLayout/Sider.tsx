@@ -1,19 +1,18 @@
 // src/layouts/BasicLayout/Sider.tsx
-import { Menu, Button, Select } from 'antd';
-import { IconFont } from '@/shared/components/IconFont';
 import { SettingTwoTone } from '@ant-design/icons';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Menu, Button, Select } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { type RootState } from '@/store';
-import { saveTheme } from '@/shared/utils/tauriStore';
-import { setMode } from '@/features/theme/themeSlice';
-import i18n from '@/features/i18n';
-import { LangEnum } from '@/core/constants/enum';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export const Sider: React.FC<{ collapsed: boolean; onCollapse: (collapsed: boolean) => void }> = ({
-  collapsed,
-}) => {
+import { LangEnum } from '@/core/constants/enum';
+import i18n from '@/features/i18n';
+import { setMode } from '@/features/theme/themeSlice';
+import { IconFont } from '@/shared/components/IconFont';
+import { saveTheme } from '@/shared/utils/tauriStore';
+import { type RootState } from '@/store';
+
+export const Sider: React.FC<{ collapsed: boolean; onCollapse: () => void }> = ({ collapsed }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -37,8 +36,8 @@ export const Sider: React.FC<{ collapsed: boolean; onCollapse: (collapsed: boole
     { label: 'Downloader', key: '/downloader', icon: <IconFont type="icon-downloader" /> },
   ];
 
-  const handleMenuClick = (e: any) => {
-    navigate(e.key);
+  const handleMenuClick = async (e: any) => {
+    await navigate(e.key);
   };
 
   const toggleTheme = async () => {
@@ -48,9 +47,9 @@ export const Sider: React.FC<{ collapsed: boolean; onCollapse: (collapsed: boole
     await saveTheme(newMode);
   };
 
-  const handleLanguageChange = (value: string) => {
+  const handleLanguageChange = async (value: string) => {
     setLanguage(value);
-    i18n.changeLanguage(value).then(r => r);
+    await i18n.changeLanguage(value);
   };
 
   return (

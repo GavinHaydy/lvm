@@ -1,6 +1,7 @@
-import React from 'react';
 import { ConfigProvider, theme as antdTheme } from 'antd';
+import React from 'react';
 import { useSelector } from 'react-redux';
+
 import { RootState } from '@/store';
 
 interface Props {

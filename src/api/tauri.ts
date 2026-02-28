@@ -1,7 +1,7 @@
 import * as tauriCore from '@tauri-apps/api/core';
 
-const isTauri = navigator.userAgent.includes("lvm")
-console.log(typeof window,window,isTauri)
+const isTauri = navigator.userAgent.includes('lvm');
+console.log(typeof window, window, isTauri);
 
 /**
  * 安全 invoke
@@ -13,10 +13,13 @@ export async function safeInvoke<T = any>(command: string, args?: Record<string,
 
     // 这里可以返回 mock 数据
     if (command === 'list_versions') {
-      return {total: 2, list: [
-        { version: '3.11.8', installed: true, active: true },
-        { version: '3.12.0', installed: false, active: false },
-      ]} as T;
+      return {
+        total: 2,
+        list: [
+          { version: '3.11.8', installed: true, active: true },
+          { version: '3.12.0', installed: false, active: false },
+        ],
+      } as T;
     }
 
     return Promise.resolve(undefined as T);

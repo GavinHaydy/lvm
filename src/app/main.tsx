@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import { Provider } from 'react-redux';
-import { store } from '@/store';
+
+import App from './App';
+
+import { initializeI18n } from '@/features/i18n';
+import { ThemeProvider } from '@/features/theme/ThemeProvider';
 import { setMode } from '@/features/theme/themeSlice';
 import { loadTheme } from '@/shared/utils/tauriStore';
-import { ThemeProvider } from '@/features/theme/ThemeProvider';
+import { store } from '@/store';
 
 async function bootstrap() {
   const savedTheme = await loadTheme();
+
+  await initializeI18n();
 
   if (savedTheme === 'dark' || savedTheme === 'light') {
     store.dispatch(setMode(savedTheme));
@@ -25,4 +30,4 @@ async function bootstrap() {
   );
 }
 
-bootstrap();
+void bootstrap();
