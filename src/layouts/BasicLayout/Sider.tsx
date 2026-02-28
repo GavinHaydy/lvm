@@ -3,7 +3,7 @@ import { Menu, Button, Select } from 'antd';
 import { IconFont } from '@/shared/components/IconFont';
 import { SettingTwoTone } from '@ant-design/icons';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { type RootState } from '@/store';
 import { saveTheme } from '@/shared/utils/tauriStore';
@@ -34,7 +34,7 @@ export const Sider: React.FC<{ collapsed: boolean; onCollapse: (collapsed: boole
     { label: 'V', key: '/v', icon: <IconFont type="icon-vlang" /> },
     { label: 'Zig', key: '/zig', icon: <IconFont type="icon-zig" /> },
     { label: 'Settings', key: '/settings', icon: <SettingTwoTone /> },
-    { label: 'Downloader', key: '/downloader', icon: <SettingTwoTone /> },
+    { label: 'Downloader', key: '/downloader', icon: <IconFont type="icon-downloader" /> },
   ];
 
   const handleMenuClick = (e: any) => {
@@ -50,7 +50,7 @@ export const Sider: React.FC<{ collapsed: boolean; onCollapse: (collapsed: boole
 
   const handleLanguageChange = (value: string) => {
     setLanguage(value);
-    i18n.changeLanguage(value);
+    i18n.changeLanguage(value).then(r => r);
   };
 
   return (
