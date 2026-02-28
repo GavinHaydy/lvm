@@ -22,19 +22,34 @@ impl LanguageManager {
         &self,
         page: usize,
         page_size: usize,
+        key_word: Option<&str>
     ) -> Result<PageResult, String> {
 
         let all_versions = self.installer.list_versions().await?;
         let installed = self.installer.list_installed().await?;
         let current = self.installer.current().await?;
 
-        let total = all_versions.len();
+        // 1. filter
+        let filtered_versions: Vec<String> = if let Some(key) = key_word {
+            if key.is_empty() {
+                all_versions // "", not filter
+            } else {
+                all_versions
+                    .into_iter()
+                    .filter(|v| v.contains(key))
+                    .collect()
+            }
+        } else {
+            all_versions
+        };
+
+        let total = filtered_versions.len();
 
         let start = page * page_size;
         let end = usize::min(start + page_size, total);
 
         let slice = if start < total {
-            &all_versions[start..end]
+            &filtered_versions[start..end]
         } else {
             &[]
         };
