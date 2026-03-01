@@ -1,0 +1,52 @@
+name: 🐞 Bug Report
+description: 报告一个问题
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢提交 Issue 🙌 请尽量填写完整信息。
+
+  - type: input
+    id: environment
+    attributes:
+      label: 运行环境
+      description: 例如 Windows 11 / macOS / Linux
+      placeholder: Windows 11
+    validations:
+      required: true
+
+  - type: input
+    id: tauri-version
+    attributes:
+      label: Tauri 版本
+      placeholder: 1.x / 2.x
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 发生了什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 如何复现这个问题？
+      placeholder: |
+        1. 打开应用
+        2. 点击按钮
+        3. 报错
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志 / 报错信息
+      render: shell
