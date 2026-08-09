@@ -42,3 +42,5 @@ bun run dev
 cargo build -p shim
 cargo tauri dev
 ```
+
+### Development has been paused due to work reasons
